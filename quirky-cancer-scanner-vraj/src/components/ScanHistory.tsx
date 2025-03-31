@@ -98,7 +98,7 @@ const ScanHistory = () => {
   return (
     <div className="w-full">
       <h2 className="text-2xl font-bold mb-6">
-        <span className="text-gradient bg-gradient-to-r from-cancer-purple to-cancer-pink bg-clip-text text-transparent">
+        <span className="text-cancer-purple">
           {t('scans.scanHistory')}
         </span>
       </h2>

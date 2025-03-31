@@ -42,8 +42,8 @@ const HowItWorks = () => {
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               How Our
-              <span className="text-gradient bg-gradient-to-r from-cancer-purple to-cancer-pink bg-clip-text text-transparent ml-2">
-                Quirky Scanner
+              <span className="text-gradient bg-gradient-to-r from-cancer-purple to-cancer-blue bg-clip-text text-transparent ml-2">
+                Scanner
               </span>{" "}
               Works
             </h2>

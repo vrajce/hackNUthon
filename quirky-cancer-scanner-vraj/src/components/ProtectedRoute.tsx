@@ -1,6 +1,5 @@
-
 import { useEffect, useState } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { toast } from "@/components/ui/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -10,31 +9,39 @@ interface ProtectedRouteProps {
 
 const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const location = useLocation();
 
   useEffect(() => {
+    let mounted = true;
+
     // Set up auth state listener
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       (event, session) => {
-        console.log("Auth state changed:", event, !!session);
-        setIsAuthenticated(!!session);
+        if (mounted) {
+          console.log("Auth state changed:", event, !!session);
+          setIsAuthenticated(!!session);
+        }
       }
     );
 
     // Initial session check
     supabase.auth.getSession().then(({ data: { session } }) => {
-      console.log("Initial session check:", !!session);
-      setIsAuthenticated(!!session);
-      
-      if (!session) {
-        toast({
-          title: "Authentication Required",
-          description: "Please log in to access this page.",
-          variant: "destructive",
-        });
+      if (mounted) {
+        console.log("Initial session check:", !!session);
+        setIsAuthenticated(!!session);
+        
+        if (!session) {
+          toast({
+            title: "Authentication Required",
+            description: "Please log in to access this page.",
+            variant: "destructive",
+          });
+        }
       }
     });
 
     return () => {
+      mounted = false;
       subscription.unsubscribe();
     };
   }, []);
@@ -52,7 +59,7 @@ const ProtectedRoute = ({ children }: ProtectedRouteProps) => {
 
   // Redirect to login if not authenticated
   if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
   // Render children if authenticated

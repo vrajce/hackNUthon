@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -24,7 +23,7 @@ const Navbar = () => {
   return (
     <nav className="w-full fixed top-0 left-0 right-0 z-50 px-6 py-4">
       <div className="max-w-7xl mx-auto">
-        <div className="flex justify-between items-center glassmorphism px-4 py-2 rounded-xl">
+        <div className="flex justify-between items-center bg-white/80 backdrop-blur-sm shadow-lg px-6 py-3 rounded-2xl border border-gray-200/20">
           <Link to="/" className="flex items-center space-x-2">
             <motion.div
               className="w-10 h-10 rounded-full bg-gradient-to-br from-cancer-blue to-cancer-purple flex items-center justify-center"
@@ -117,7 +116,7 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         <motion.div
-          className="md:hidden fixed top-20 right-0 h-screen w-64 bg-white shadow-lg z-50 rounded-l-xl border-l border-t border-b border-cancer-blue/20"
+          className="md:hidden fixed top-20 right-0 h-screen w-64 bg-white/80 backdrop-blur-sm shadow-lg z-50 rounded-l-2xl border-l border-t border-b border-gray-200/20"
           animate={isOpen ? "open" : "closed"}
           variants={variants}
           initial="closed"

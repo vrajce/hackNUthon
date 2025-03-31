@@ -4,7 +4,7 @@
   flex-grow: 1;
   padding: 20px;
   overflow-y: auto;
-  background-color: var(--chatbot-bg);
+  background-color: transparent;
   position: relative;
   padding-bottom: 80px; /* Space for input */
 }
@@ -18,12 +18,13 @@
 .date-divider {
   text-align: center;
   padding: 5px 15px;
-  background-color: rgba(var(--primary), 0.1);
-  color: var(--chatbot-text);
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #e2e8f0;
   border-radius: 15px;
   font-size: 0.8rem;
   margin: 10px auto;
   max-width: max-content;
+  backdrop-filter: blur(4px);
 }
 
 .message {
@@ -51,6 +52,7 @@
   padding: 1rem !important;
   border-radius: 1rem !important;
   position: relative !important;
+  backdrop-filter: blur(4px) !important;
 }
 
 .user-message .message-content {

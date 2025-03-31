@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Lightbulb, Search, Brain, Activity, MousePointer } from "lucide-react";
 
@@ -6,25 +5,25 @@ const featureData = [
   {
     icon: Search,
     title: "Advanced Cell Detection",
-    description: "Our quirky AI scanners can identify abnormal cells with 99.7% accuracy, catching what human eyes might miss.",
+    description: "Our AI-powered system assists in identifying cellular patterns with high accuracy, supporting medical professionals in their diagnosis.",
     color: "cancer-blue"
   },
   {
     icon: Brain,
     title: "Neural Pattern Analysis",
-    description: "Using quantum neural networks to analyze cellular patterns and detect the tiniest biomarkers of cancer.",
+    description: "Using advanced machine learning to analyze cellular patterns and identify potential biomarkers for further medical review.",
     color: "cancer-purple" 
   },
   {
     icon: Activity,
-    title: "Real-time Diagnostics",
-    description: "Get instant, playful feedback on your scan results with our advanced visualization technology.",
+    title: "Real-time Analysis",
+    description: "Get preliminary scan results quickly while maintaining high standards of accuracy and reliability.",
     color: "cancer-teal"
   },
   {
     icon: Lightbulb,
     title: "Smart Recommendations",
-    description: "Our AI doesn't just detect – it suggests personalized next steps based on your unique biodata.",
+    description: "Receive data-driven suggestions for next steps based on scan results, always in consultation with healthcare providers.",
     color: "cancer-pink"
   }
 ];

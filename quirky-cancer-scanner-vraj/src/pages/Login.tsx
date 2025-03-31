@@ -1,21 +1,28 @@
-
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthForm from "@/components/AuthForm";
+import { supabase } from "@/integrations/supabase/client";
 
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   
   useEffect(() => {
     // Check if user is already logged in
-    const user = localStorage.getItem("user");
-    if (user) {
-      navigate("/dashboard");
-    }
-  }, [navigate]);
+    const checkAuth = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session) {
+        // If user is logged in, navigate to dashboard or the page they tried to access
+        const from = (location.state as any)?.from?.pathname || "/dashboard";
+        navigate(from, { replace: true });
+      }
+    };
+    
+    checkAuth();
+  }, [navigate, location]);
   
   return (
     <div className="min-h-screen flex flex-col bg-white">

@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import DashboardSidebar from "@/components/DashboardSidebar";
-import UploadSection from "@/components/UploadSection";
 import ResultsSection from "@/components/ResultsSection";
 import ScanHistory from "@/components/ScanHistory";
 import { useTranslation } from "react-i18next";
+import { ClipboardList, BrainCircuit, Scan } from "lucide-react";
 
 const Dashboard = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -36,18 +37,6 @@ const Dashboard = () => {
     }
   }, []);
   
-  const handleUploadComplete = (results: any) => {
-    setScanResults(results);
-    
-    // Scroll to results section after a short delay
-    setTimeout(() => {
-      const resultsSection = document.getElementById("results-section");
-      if (resultsSection) {
-        resultsSection.scrollIntoView({ behavior: "smooth" });
-      }
-    }, 500);
-  };
-  
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
       <DashboardSidebar isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed} />
@@ -73,10 +62,66 @@ const Dashboard = () => {
               </div>
             </motion.div>
             
-            <UploadSection onUploadComplete={handleUploadComplete} />
-            
-            <div id="results-section">
-              <ResultsSection results={scanResults} />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <Link to="/scans">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-white rounded-xl border border-cancer-blue/10 shadow-sm p-6 hover:shadow-md transition-all cursor-pointer h-full"
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className="p-3 bg-cancer-teal/10 rounded-lg">
+                      <Scan className="w-6 h-6 text-cancer-teal" />
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-semibold text-gray-800">Upload Scan</h2>
+                      <p className="text-gray-600 mt-1">Upload and analyze medical images for cancer detection</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
+
+              <Link to="/quiz">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-white rounded-xl border border-cancer-blue/10 shadow-sm p-6 hover:shadow-md transition-all cursor-pointer h-full"
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className="p-3 bg-cancer-blue/10 rounded-lg">
+                      <BrainCircuit className="w-6 h-6 text-cancer-blue" />
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-semibold text-gray-800">Take Risk Assessment Quiz</h2>
+                      <p className="text-gray-600 mt-1">Evaluate your cancer risk factors through our interactive quiz</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
+
+              <Link to="/reports">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.3 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="bg-white rounded-xl border border-cancer-blue/10 shadow-sm p-6 hover:shadow-md transition-all cursor-pointer h-full"
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className="p-3 bg-cancer-purple/10 rounded-lg">
+                      <ClipboardList className="w-6 h-6 text-cancer-purple" />
+                    </div>
+                    <div>
+                      <h2 className="text-xl font-semibold text-gray-800">View Reports</h2>
+                      <p className="text-gray-600 mt-1">Access detailed reports and analytics of your scan history</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </Link>
             </div>
             
             <motion.div

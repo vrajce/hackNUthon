@@ -4,7 +4,7 @@
   flex: 1;
   overflow: hidden;
   position: relative;
-  background-color: #f8fafc;
+  background-color: transparent;
   height: 100%;
 }
 
@@ -16,7 +16,7 @@
   height: 100%;
   padding: 20px;
   text-align: center;
-  color: #64748b;
+  color: #1e293b;
 }
 
 .empty-state-icon {
@@ -36,6 +36,7 @@
   max-width: 500px;
   line-height: 1.5;
   margin-bottom: 20px;
+  color: #1e293b;
 }
 
 .empty-state-suggestions {
@@ -55,6 +56,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   border: 1px solid rgba(59, 130, 246, 0.2);
+  backdrop-filter: blur(4px);
 }
 
 .suggestion-chip:hover {
@@ -71,11 +73,12 @@
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(10px);
   border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .welcome-title {
@@ -86,7 +89,7 @@
 }
 
 .welcome-description {
-  color: #64748b;
+  color: #1e293b;
   line-height: 1.6;
   margin-bottom: 20px;
 }

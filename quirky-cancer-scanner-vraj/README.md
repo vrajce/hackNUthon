@@ -1,8 +1,7 @@
-# Welcome to your Lovable project
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/212a8194-b852-4edc-9299-53797400fa88
+
 
 ## Cancer Assistant Chatbot
 

@@ -84,7 +84,7 @@ Our models were trained on diverse datasets comprising thousands of medical imag
 - **Yash Patel** - ML Engineer & Project Lead
 - **Yash Vasani** - ML Engineer 
 - **FarhaanAli Vohra** - Full Stack Developer
-- **Vraj Parmar** - Full Stack Developer
+- **Vraj Parmar** - ML Engineer
 
 
 
